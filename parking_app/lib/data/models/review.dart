@@ -1,0 +1,31 @@
+class Review {
+  final String id;
+  final String userId;
+  final String userName;
+  final String? userAvatar;
+  final int rating;
+  final String comment;
+  final DateTime createdAt;
+
+  Review({
+    required this.id,
+    required this.userId,
+    required this.userName,
+    this.userAvatar,
+    required this.rating,
+    required this.comment,
+    required this.createdAt,
+  });
+
+  factory Review.fromJson(Map<String, dynamic> json) {
+    return Review(
+      id: json['id'].toString(),
+      userId: json['user_id'].toString(),
+      userName: json['user_name'],
+      userAvatar: json['user_avatar'],
+      rating: json['rating'],
+      comment: json['comment'],
+      createdAt: DateTime.parse(json['created_at']),
+    );
+  }
+}
